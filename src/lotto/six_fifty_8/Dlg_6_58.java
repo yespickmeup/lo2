@@ -217,6 +217,7 @@ public class Dlg_6_58 extends javax.swing.JDialog {
         jDateChooser2 = new com.toedter.calendar.JDateChooser();
         jButton2 = new javax.swing.JButton();
         jCheckBox2 = new javax.swing.JCheckBox();
+        jCheckBox3 = new javax.swing.JCheckBox();
         jPanel3 = new javax.swing.JPanel();
         jLabel5 = new javax.swing.JLabel();
         lbl1 = new javax.swing.JLabel();
@@ -394,6 +395,9 @@ public class Dlg_6_58 extends javax.swing.JDialog {
         jCheckBox2.setSelected(true);
         jCheckBox2.setText("Order Result");
 
+        jCheckBox3.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jCheckBox3.setText("Daily");
+
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
@@ -411,7 +415,9 @@ public class Dlg_6_58 extends javax.swing.JDialog {
                         .addComponent(jDateChooser1, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(jDateChooser2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jCheckBox2)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jCheckBox2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jCheckBox3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -427,10 +433,12 @@ public class Dlg_6_58 extends javax.swing.JDialog {
                         .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                            .addComponent(jCheckBox1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jLabel3, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jDateChooser1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                .addComponent(jCheckBox1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(jLabel3, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(jDateChooser1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                            .addComponent(jCheckBox3, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(1, 1, 1)
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                             .addComponent(jLabel4, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -1709,7 +1717,7 @@ public class Dlg_6_58 extends javax.swing.JDialog {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-       ret_results();
+        ret_results();
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
@@ -1725,6 +1733,7 @@ public class Dlg_6_58 extends javax.swing.JDialog {
     private javax.swing.JButton jButton2;
     private javax.swing.JCheckBox jCheckBox1;
     private javax.swing.JCheckBox jCheckBox2;
+    private javax.swing.JCheckBox jCheckBox3;
     private com.toedter.calendar.JDateChooser jDateChooser1;
     private com.toedter.calendar.JDateChooser jDateChooser2;
     private javax.swing.JLabel jLabel1;
@@ -1856,7 +1865,7 @@ public class Dlg_6_58 extends javax.swing.JDialog {
     private void myInit() {
         init_key();
         init_tbl_6_58(tbl_6_58);
-       
+
     }
 
     public void do_pass() {
@@ -1959,7 +1968,7 @@ public class Dlg_6_58 extends javax.swing.JDialog {
 
     private void ret_results() {
         String where = " ";
-
+        all_data.clear();
         List<to_6_58> datas = Six_fifty_8.ret_data(where);
 
         for (int i = 0; i < datas.size(); i++) {
@@ -1977,36 +1986,31 @@ public class Dlg_6_58 extends javax.swing.JDialog {
             interval_x[2] = FitIn.toInt(result[3]) - FitIn.toInt(result[2]);
             interval_x[3] = FitIn.toInt(result[4]) - FitIn.toInt(result[3]);
             interval_x[4] = FitIn.toInt(result[5]) - FitIn.toInt(result[4]);
-            String int_x = interval_x[0] + ", " + interval_x[1] + ", " + interval_x[2] + ", " + interval_x[3] + ", " + interval_x[4];
+            int total2=interval_x[0] +interval_x[1]+interval_x[2]+interval_x[3]+interval_x[4];    
+            String int_x = interval_x[0] + ", " + interval_x[1] + ", " + interval_x[2] + ", " + interval_x[3] + ", " + interval_x[4]+ " = "+total2;
             to.setInterval_x(int_x);
 
             if (i != datas.size() - 1) {
                 int[] interval_y = new int[5];
                 to_6_58 to2 = datas.get(i + 1);
-
                 String[] result2 = {};
                 if (jCheckBox2.isSelected()) {
                     result2 = Ascending.order2(to2.result).split("-");
-
                 } else {
                     result2 = to2.result.split("-");
-
                 }
                 interval_y[0] = FitIn.toInt(result2[0]) - FitIn.toInt(result[0]);
                 int total = FitIn.toInt(result2[0]) - FitIn.toInt(result[0]);
-
                 interval_y[1] = FitIn.toInt(result2[1]) - FitIn.toInt(result[1]);
                 interval_y[2] = FitIn.toInt(result2[2]) - FitIn.toInt(result[2]);
                 interval_y[3] = FitIn.toInt(result2[3]) - FitIn.toInt(result[3]);
                 interval_y[4] = FitIn.toInt(result2[4]) - FitIn.toInt(result[4]);
                 String int_y = interval_y[0] + ", " + interval_y[1] + ", " + interval_y[2] + ", " + interval_y[3] + ", " + interval_y[4];
                 to2.setInterval_y(int_y);
-
             }
             all_data.add(to);
         }
         query();
-
     }
 
     private void query() {
@@ -2014,26 +2018,38 @@ public class Dlg_6_58 extends javax.swing.JDialog {
             List<to_6_58> new_data = new ArrayList();
             String date_from = DateType.sf.format(jDateChooser1.getDate());
             String date_to = DateType.sf.format(jDateChooser2.getDate());
+            Calendar cal1 = Calendar.getInstance();
+            cal1.setTime(jDateChooser2.getDate());
+            Calendar cal2 = Calendar.getInstance();
+            cal2.setTime(jDateChooser1.getDate());
+            int day = cal2.get(Calendar.DAY_OF_MONTH);
 
             for (int i = 0; i < all_data.size(); i++) {
                 to_6_58 to = all_data.get(i);
                 try {
                     Date date = DateType.sf.parse(to.result_date);
-                    Calendar cal1 = Calendar.getInstance();
-                    cal1.setTime(jDateChooser2.getDate());
-                    Calendar cal2 = Calendar.getInstance();
-                    cal2.setTime(jDateChooser1.getDate());
-                    if (date.before(cal1.getTime()) && date.after(cal2.getTime())) {
-                        new_data.add(to);
+
+                    if (jCheckBox3.isSelected()) {
+                        Calendar cal3 = Calendar.getInstance();
+                        cal3.setTime(date);
+                        int day2 = cal3.get(Calendar.DAY_OF_MONTH);
+                        if (day2 == day) {
+                            new_data.add(to);
+                        }
+                    } else {
+                        if (date.before(cal1.getTime()) && date.after(cal2.getTime())) {
+                            new_data.add(to);
+                        }
+
                     }
 
                 } catch (ParseException ex) {
                     Logger.getLogger(Dlg_6_58.class.getName()).log(Level.SEVERE, null, ex);
                 }
             }
-            
-            loadData_6_58(new_data);
-
+//            System.out.println("new_data: "+new_data.size());
+//            loadData_6_58(new_data);
+            tbl_6_58_ALM.addAll(new_data);
             jLabel2.setText("" + tbl_6_58_ALM.size());
             count();
         } else {
@@ -2058,7 +2074,7 @@ public class Dlg_6_58 extends javax.swing.JDialog {
         String name;
         int value;
         int value2;
-        
+
         public to_count() {
         }
 

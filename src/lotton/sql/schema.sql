@@ -17,3 +17,18 @@ id int auto_increment primary key
 ,result_date date
 ,result varchar(255)
 );
+
+create table swertres(
+id int auto_increment primary key
+,draw_time varchar(255)
+,result varchar(255)
+,draw_date date
+,winners int
+);
+
+
+
+
+
+
+
